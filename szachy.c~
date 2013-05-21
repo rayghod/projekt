@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 #define SIZE 10
 
 char board[SIZE][SIZE];
@@ -209,19 +210,10 @@ void check(int i, int j, int k, int l, char name){
       }
     break;
     case 'k':
-      printf("Wybrana figura to król\n");
-    break;
-    case 'K':
-      printf("Wybrana figura to król\n");
-    break;
-    case 'q':
-      printf("Wybrana figura to królowa\n");
-    break;
-    case 'Q':
-      printf("Wybrana figura to królowa\n");
-    break;
-    case 'b':
-       if(j==l||i==k){
+      if(fabs(j-l)<=1 && fabs(i-k)<=1){
+        move(i,j,k,l);
+      }
+      else{
         printf("Wybrałeś nieprawidłowy ruch. Podaj jeszcze raz współrzędne przesunięcia\n");
         scanf("%2s", coor2);
         k=(int)coor2[0]-95;
@@ -229,12 +221,115 @@ void check(int i, int j, int k, int l, char name){
         l=11-l;
         check(i,j,k,l,board[j][i]);
       }
-      else{
+    break;
+    case 'K':
+      if(fabs(j-l)<=1 && fabs(i-k)<=1){
         move(i,j,k,l);
+      }
+      else{
+        printf("Wybrałeś nieprawidłowy ruch. Podaj jeszcze raz współrzędne przesunięcia\n");
+        scanf("%2s", coor2);
+        k=(int)coor2[0]-95;
+        l=(int)coor2[1]-47;
+        l=11-l;
+        check(i,j,k,l,board[j][i]);
+      }
+    break;
+    case 'q':
+      for(x=1;x<8;x++){
+        for(y=1;y<8;y++){
+          if((l==j+x && k==i+y)||(l==j-x && k==i-y)){
+            move(i,j,k,l);
+            x=11;
+          }
+          if((l==j+x && k==i-y)||(l==j-x && k==i+y)){
+            move(i,j,k,l);
+            x=11;
+          }
+        }
+      }
+      if(j==l||i==k){
+        move(i,j,k,l);
+        x=11;
+      }
+      if(x<10){
+        printf("Wybrałeś nieprawidłowy ruch. Podaj jeszcze raz współrzędne przesunięcia\n");
+        scanf("%2s", coor2);
+        k=(int)coor2[0]-95;
+        l=(int)coor2[1]-47;
+        l=11-l;
+        check(i,j,k,l,board[j][i]);
+      }
+    break;
+    case 'Q':
+      for(x=1;x<8;x++){
+        for(y=1;y<8;y++){
+          if((l==j+x && k==i+y)||(l==j-x && k==i-y)){
+            move(i,j,k,l);
+            x=11;
+          }
+          if((l==j+x && k==i-y)||(l==j-x && k==i+y)){
+            move(i,j,k,l);
+            x=11;
+          }
+        }
+      }
+      if(j==l||i==k){
+        move(i,j,k,l);
+        x=11;
+      }
+      if(x<10){
+        printf("Wybrałeś nieprawidłowy ruch. Podaj jeszcze raz współrzędne przesunięcia\n");
+        scanf("%2s", coor2);
+        k=(int)coor2[0]-95;
+        l=(int)coor2[1]-47;
+        l=11-l;
+        check(i,j,k,l,board[j][i]);
+      }
+    break;
+    case 'b':
+      for(x=1;x<8;x++){
+        for(y=1;y<8;y++){
+          if((l==j+x && k==i+y)||(l==j-x && k==i-y)){
+            move(i,j,k,l);
+            x=11;
+          }
+          if((l==j+x && k==i-y)||(l==j-x && k==i+y)){
+            move(i,j,k,l);
+            x=11;
+          }
+        }
+      }
+      if(x<10){
+        printf("Wybrałeś nieprawidłowy ruch. Podaj jeszcze raz współrzędne przesunięcia\n");
+        scanf("%2s", coor2);
+        k=(int)coor2[0]-95;
+        l=(int)coor2[1]-47;
+        l=11-l;
+        check(i,j,k,l,board[j][i]);
       }
     break;
     case 'B':
-      //bishop(i,j,k,l);
+      for(x=1;x<8;x++){
+        for(y=1;y<8;y++){
+          if((l==j+x && k==i+y)||(l==j-x && k==i-y)){
+            move(i,j,k,l);
+            x=11;
+          }
+          if((l==j+x && k==i-y)||(l==j-x && k==i+y)){
+            move(i,j,k,l);
+            x=11;
+          }
+        }
+      }
+      if(x<10){
+        printf("Wybrałeś nieprawidłowy ruch. Podaj jeszcze raz współrzędne przesunięcia\n");
+        scanf("%2s", coor2);
+        k=(int)coor2[0]-95;
+        l=(int)coor2[1]-47;
+        l=11-l;
+        check(i,j,k,l,board[j][i]);
+      }
     break;
     case '*':
       printf("Jako figurę wybrałeś puste pole\n");
@@ -251,34 +346,41 @@ void transform(char *coor, char *coor2){
   k=(int)coor2[0]-95;
   l=(int)coor2[1]-47;
   l=11-l;
-
   check(i,j,k,l,board[j][i]);
 }
  
 
 int main(){
-  int i, j, k, l, end;
+  int i, j, k, l,x,y, end;
   char coor[3];
   char coor2[3];
   end=0;
   fill_board();
   draw_board();
   printf("Pierwszy ruch należy do małych liter\n");
-printf("%c",board[0][0]);
-printf("%c",board[1][0]);
-printf("%c",board[2][0]);
-printf("%c",board[3][0]);
-printf("%c",board[4][0]);
   while(end!=1){
     printf("Podaj współrzędne figury, którą chcesz przesunąć (np. a1)\n");
     scanf("%2s", coor);
     printf("Podaj współrzędne, na którą chcesz ją przesunąć (np. a2)\n");
     scanf("%2s", coor2);
     transform(coor,coor2);
-
-
-
+    end=1;
+    for(x=0;x<10;x++){
+      for(y=0;y<10;y++){
+        if(board[x][y]=='k'){
+         end=end+1;
+        }
+        else if(board[x][y]=='K'){
+         end=end+1;
+        }
+      }
+    }  
+    end=end-1;
   }
+
+  printf("Koniec gry\n");
+
+
 }
 
 /*
