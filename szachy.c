@@ -348,22 +348,72 @@ void transform(char *coor, char *coor2){
   l=11-l;
   check(i,j,k,l,board[j][i]);
 }
- 
+char player_check(char *coor, char *coor2, int player){
+  int i,j;
+  i=(int)coor[0]-95;
+  j=(int)coor[1]-47;
+  j=11-j;
+  if(board[j][i]=='*'){
+    printf("Jako figurę wybrałeś puste pole, podaj współrzędne figury, którą chcesz przesunąć (np. a1)\n");
+    scanf("%2s", coor);
+    printf("Podaj współrzędne, na którą chcesz ją przesunąć (np. a2)\n");
+    scanf("%2s", coor2);
+  }
+  if(player==0){
+    if(board[j][i]=='P'||board[j][i]=='R'||board[j][i]=='N'||board[j][i]=='B'||board[j][i]=='Q'||board[j][i]=='K'){
+      printf("Wybrałeś figurę przeciwnika, wskaż jeszcze raz współrzędne\n");
+      scanf("%2s", coor);
+      printf("Podaj współrzędne, na którą chcesz ją przesunąć (np. a2)\n");
+      scanf("%2s", coor2);
+      player_check(coor,coor2,player);
+    }
+    else{
+      transform(coor,coor2);
+    }
+  }
+  else{
+    if(board[j][i]=='p'||board[j][i]=='r'||board[j][i]=='n'||board[j][i]=='b'||board[j][i]=='q'||board[j][i]=='k'){
+      printf("Wybrałeś figurę przeciwnika, wskaż jeszcze raz współrzędne\n");
+      scanf("%2s", coor);
+      printf("Podaj współrzędne, na którą chcesz ją przesunąć (np. a2)\n");
+      scanf("%2s", coor2);
+      player_check(coor,coor2,player);
+    }
+    else{
+      transform(coor,coor2);
+    }
+  }
+}
+
+
 
 int main(){
-  int i, j, k, l,x,y, end;
+  int i, j, k, l,x,y, end,player;
   char coor[3];
   char coor2[3];
+  char p[3];
   end=0;
   fill_board();
   draw_board();
-  printf("Pierwszy ruch należy do małych liter\n");
+  printf("Pierwszy ruch należy do małych(białych) liter\n");
   while(end!=1){
+    player=0;
+
+    printf("Ruch małych liter\n");
     printf("Podaj współrzędne figury, którą chcesz przesunąć (np. a1)\n");
     scanf("%2s", coor);
     printf("Podaj współrzędne, na którą chcesz ją przesunąć (np. a2)\n");
     scanf("%2s", coor2);
-    transform(coor,coor2);
+    player_check(coor,coor2,player);
+
+    player=1;
+    printf("Ruch WIELKICH liter\n");
+    printf("Podaj współrzędne figury, którą chcesz przesunąć (np. a1)\n");
+    scanf("%2s", coor);
+    printf("Podaj współrzędne, na którą chcesz ją przesunąć (np. a2)\n");
+    scanf("%2s", coor2);
+    player_check(coor,coor2,player);
+
     end=1;
     for(x=0;x<10;x++){
       for(y=0;y<10;y++){

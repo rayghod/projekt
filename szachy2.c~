@@ -80,6 +80,15 @@ void move(int i, int j, int k, int l){
   printf("\n");
 }
 
+void error(int i, int j, int k, int l){
+  char coor2[3];
+  printf("Wybrałeś nieprawidłowy ruch. Podaj jeszcze raz współrzędne przesunięcia\n");
+  scanf("%2s", coor2);
+  k=(int)coor2[0]-95;
+  l=(int)coor2[1]-47;
+  l=11-l;
+}
+
 void check(int i, int j, int k, int l, char name){
   char coor2[3];
   int x,y;
@@ -89,8 +98,7 @@ void check(int i, int j, int k, int l, char name){
         k=(int)coor2[0]-95;
         l=(int)coor2[1]-47;
         l=11-l;
-        check(i,j,k,l,board[j][i]);
-  }
+ }
 
   switch(name){
     case 'p':
@@ -107,21 +115,9 @@ void check(int i, int j, int k, int l, char name){
           }
         }
         else{
-          printf("Wybrałeś nieprawidłowy ruch. Podaj jeszcze raz współrzędne przesunięcia\n");
-          scanf("%2s", coor2);
-          k=(int)coor2[0]-95;
-          l=(int)coor2[1]-47;
-          l=11-l;
-          check(i,j,k,l,board[j][i]);
+          error(i,j,k,l,board[j][i]);        check(i,j,k,l,board[j][i]);
+          
         }
-      }
-      else{
-        printf("Wybrałeś nieprawidłowy ruch. Podaj jeszcze raz współrzędne przesunięcia\n");
-        scanf("%2s", coor2);
-        k=(int)coor2[0]-95;
-        l=(int)coor2[1]-47;
-        l=11-l;
-        check(i,j,k,l,board[j][i]);
       }
     break;
     case 'P':
@@ -138,21 +134,8 @@ void check(int i, int j, int k, int l, char name){
           }
         }
         else{
-          printf("Wybrałeś nieprawidłowy ruch. Podaj jeszcze raz współrzędne przesunięcia\n");
-          scanf("%2s", coor2);
-          k=(int)coor2[0]-95;
-          l=(int)coor2[1]-47;
-          l=11-l;
-          check(i,j,k,l,board[j][i]);
+          error(i,j,k,l,board[j][i]);        check(i,j,k,l,board[j][i]);
         }
-      }
-      else{
-        printf("Wybrałeś nieprawidłowy ruch. Podaj jeszcze raz współrzędne przesunięcia\n");
-        scanf("%2s", coor2);
-        k=(int)coor2[0]-95;
-        l=(int)coor2[1]-47;
-        l=11-l;
-        check(i,j,k,l,board[j][i]);
       }
     break;
     case 'r':
@@ -160,12 +143,7 @@ void check(int i, int j, int k, int l, char name){
         move(i,j,k,l);
       }
       else{
-        printf("Wybrałeś nieprawidłowy ruch. Podaj jeszcze raz współrzędne przesunięcia\n");
-        scanf("%2s", coor2);
-        k=(int)coor2[0]-95;
-        l=(int)coor2[1]-47;
-        l=11-l;
-        check(i,j,k,l,board[j][i]);
+        error(i,j,k,l,board[j][i]);        check(i,j,k,l,board[j][i]);
       }
     break;
     case 'R':
@@ -173,12 +151,7 @@ void check(int i, int j, int k, int l, char name){
         move(i,j,k,l);
       }
       else{
-        printf("Wybrałeś nieprawidłowy ruch. Podaj jeszcze raz współrzędne przesunięcia\n");
-        scanf("%2s", coor2);
-        k=(int)coor2[0]-95;
-        l=(int)coor2[1]-47;
-        l=11-l;
-        check(i,j,k,l,board[j][i]);
+        error(i,j,k,l,board[j][i]);        check(i,j,k,l,board[j][i]);
       }
     break;
     case 'n':
@@ -187,12 +160,7 @@ void check(int i, int j, int k, int l, char name){
         move(i,j,k,l);
       }
       else{
-        printf("Wybrałeś nieprawidłowy ruch. Podaj jeszcze raz współrzędne przesunięcia\n");
-        scanf("%2s", coor2);
-        k=(int)coor2[0]-95;
-        l=(int)coor2[1]-47;
-        l=11-l;
-        check(i,j,k,l,board[j][i]);
+        error(i,j,k,l,board[j][i]);        check(i,j,k,l,board[j][i]);
       }
     break;
     case 'N':
@@ -201,12 +169,7 @@ void check(int i, int j, int k, int l, char name){
         move(i,j,k,l);
       }
       else{
-        printf("Wybrałeś nieprawidłowy ruch. Podaj jeszcze raz współrzędne przesunięcia\n");
-        scanf("%2s", coor2);
-        k=(int)coor2[0]-95;
-        l=(int)coor2[1]-47;
-        l=11-l;
-        check(i,j,k,l,board[j][i]);
+        error(i,j,k,l,board[j][i]);        check(i,j,k,l,board[j][i]);
       }
     break;
     case 'k':
@@ -214,12 +177,7 @@ void check(int i, int j, int k, int l, char name){
         move(i,j,k,l);
       }
       else{
-        printf("Wybrałeś nieprawidłowy ruch. Podaj jeszcze raz współrzędne przesunięcia\n");
-        scanf("%2s", coor2);
-        k=(int)coor2[0]-95;
-        l=(int)coor2[1]-47;
-        l=11-l;
-        check(i,j,k,l,board[j][i]);
+        error(i,j,k,l,board[j][i]);        check(i,j,k,l,board[j][i]);
       }
     break;
     case 'K':
@@ -227,12 +185,7 @@ void check(int i, int j, int k, int l, char name){
         move(i,j,k,l);
       }
       else{
-        printf("Wybrałeś nieprawidłowy ruch. Podaj jeszcze raz współrzędne przesunięcia\n");
-        scanf("%2s", coor2);
-        k=(int)coor2[0]-95;
-        l=(int)coor2[1]-47;
-        l=11-l;
-        check(i,j,k,l,board[j][i]);
+        error(i,j,k,l,board[j][i]);        check(i,j,k,l,board[j][i]);
       }
     break;
     case 'q':
@@ -253,12 +206,7 @@ void check(int i, int j, int k, int l, char name){
         x=11;
       }
       if(x<10){
-        printf("Wybrałeś nieprawidłowy ruch. Podaj jeszcze raz współrzędne przesunięcia\n");
-        scanf("%2s", coor2);
-        k=(int)coor2[0]-95;
-        l=(int)coor2[1]-47;
-        l=11-l;
-        check(i,j,k,l,board[j][i]);
+        error(i,j,k,l,board[j][i]);        check(i,j,k,l,board[j][i]);
       }
     break;
     case 'Q':
@@ -279,12 +227,7 @@ void check(int i, int j, int k, int l, char name){
         x=11;
       }
       if(x<10){
-        printf("Wybrałeś nieprawidłowy ruch. Podaj jeszcze raz współrzędne przesunięcia\n");
-        scanf("%2s", coor2);
-        k=(int)coor2[0]-95;
-        l=(int)coor2[1]-47;
-        l=11-l;
-        check(i,j,k,l,board[j][i]);
+        error(i,j,k,l,board[j][i]);        check(i,j,k,l,board[j][i]);
       }
     break;
     case 'b':
@@ -301,12 +244,7 @@ void check(int i, int j, int k, int l, char name){
         }
       }
       if(x<10){
-        printf("Wybrałeś nieprawidłowy ruch. Podaj jeszcze raz współrzędne przesunięcia\n");
-        scanf("%2s", coor2);
-        k=(int)coor2[0]-95;
-        l=(int)coor2[1]-47;
-        l=11-l;
-        check(i,j,k,l,board[j][i]);
+        error(i,j,k,l,board[j][i]);        check(i,j,k,l,board[j][i]);
       }
     break;
     case 'B':
@@ -323,12 +261,7 @@ void check(int i, int j, int k, int l, char name){
         }
       }
       if(x<10){
-        printf("Wybrałeś nieprawidłowy ruch. Podaj jeszcze raz współrzędne przesunięcia\n");
-        scanf("%2s", coor2);
-        k=(int)coor2[0]-95;
-        l=(int)coor2[1]-47;
-        l=11-l;
-        check(i,j,k,l,board[j][i]);
+        error(i,j,k,l,board[j][i]);        check(i,j,k,l,board[j][i]);
       }
     break;
     case '*':
@@ -351,16 +284,14 @@ void transform(char *coor, char *coor2){
  
 
 int main(){
-  int i, j, k, l,x,y, end,player;
+  int i, j, k, l,x,y, end;
   char coor[3];
   char coor2[3];
   end=0;
   fill_board();
   draw_board();
-  printf("Pierwszy ruch należy do małych(białych) liter\n");
+  printf("Pierwszy ruch należy do małych liter\n");
   while(end!=1){
-    player=0;
-    printf("Ruch małych liter\n");
     printf("Podaj współrzędne figury, którą chcesz przesunąć (np. a1)\n");
     scanf("%2s", coor);
     printf("Podaj współrzędne, na którą chcesz ją przesunąć (np. a2)\n");
